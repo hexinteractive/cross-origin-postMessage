@@ -3,14 +3,14 @@ $(document).ready(function() {
 
   var targetOrigin, targetWindow, tag;
 
-  if($('body.pageA')) {
+  if($('body').hasClass('pageA')) {
 
     targetOrigin = 'http://hexinteractive.net';
     tag = '<iframe src="' + targetOrigin + '/cross-origin-postmessage/other.html' + '"></iframe>';
     $('#iframeHolder').html(tag);
     targetWindow = $('iframe')[0].contentWindow;
 
-  } else if($('body.pageB')) {
+  } else if($('body').hasClass('pageB')) {
 
     targetOrigin = 'http://hexinteractive.github.io';
     targetWindow = window.parent;

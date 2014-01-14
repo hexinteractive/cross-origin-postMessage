@@ -41,7 +41,6 @@ body:before {
   font-weight: bold;
   z-index: -1;
   height: 0;
-  display: none;
 }
 
 body.pageA:before {
@@ -99,6 +98,7 @@ h2 {
   bottom: 20px;
   width: 45%;
   border: 3px solid #492F1B;
+  background: #ccc;
 }
 
 .pageB #iframeHolder {

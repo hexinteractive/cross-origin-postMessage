@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Cross-Origin postMessage</title>
+    <title>Cross-Origin postMessage [A]</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="stylesheet" href="css/normalize.css"> -->
@@ -18,81 +18,13 @@
     <h2>unknown origin</h2>
     <form>
       <label for="tx">Send a message </label>
-      <input id="tx" name="tx" type="text" placeholder="well, say something..." value="Say something nice" required />
+      <input id="tx" name="tx" type="text" placeholder="well, say something..." value="" required />
       <input id="send" type="submit" value="send" />
-      <label for="rx">message recieved</label>
       <div id="rx"></div>
     </form>
     <div id="iframeHolder"></div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script>
-
-
-// var pages = [],
-//     tag = '',
-//     theOtherWindow;
-
-// pages['B'] = ['http://', 'jsbin.com','/oREQeqO/1'];
-// tag = '<iframe src="' + pages['B'].join('') + '"></iframe>';
-
-// $('#iframeHolder').html(tag);
-
-// theOtherWindow = $('iframe')[0].contentWindow;
-
-
-// :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
-
-$(document).ready(function() {
-
-$('h2').text('on ' + window.location.origin);
-
-  /*
-   * In window A's scripts, with A being on <http://example.com:8080>:
-   */
-
-  // var popup = window.open('http://localhost:8000/cross-origin-postmessage/other.html');
-  var tag = '<iframe src="' + 'http://localhost:8000/cross-origin-postmessage/other.html' + '"></iframe>';
-  $('#iframeHolder').html(tag);
-  var popup = $('iframe')[0].contentWindow;
-
-  // When the popup has fully loaded, if not blocked by a popup blocker:
-
-  // This will successfully queue a message to be sent to the popup, assuming
-  // the window hasn't changed its location.
-  // popup.postMessage("hello there!", "http://localhost:8000");
-
-  function receiveMessage(event)
-  {
-    if (event.origin !== "http://localhost:8000")
-      return;
-
-    // event.source is popup
-    // event.data is "hi there yourself!  the secret response is: rheeeeet!"
-    // $('#rx').append('<p>'+ event.data +'</p>');
-
-    var replyChar = $('<div>&#x21A9;</div>').text();
-    if(typeof event.data === 'string' && event.data.indexOf('&#x21A9;') !== 0) {
-      event.source.postMessage("&#x21A9; got it", event.origin);
-      $('#rx').append('<p>'+ event.data +'</p>').scrollTop(999999);
-    } else {
-      $('#rx').append('<p class="reply">'+ event.data +'</p>').scrollTop(999999);
-    }
-  }
-  window.addEventListener("message", receiveMessage, false);
-
-
-  $('form').on('submit',function(e){
-    popup.postMessage($('#tx').val(), "http://localhost:8000");
-    e.preventDefault();
-    return false;
-  });
-
-
-
-});
-
-
-    </script>
+    <script src="shared.js"></script>
   </body>
 </html>

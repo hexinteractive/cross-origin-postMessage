@@ -42,7 +42,11 @@ $(document).ready(function() {
     }
   }
 
-  $(window).on("message", receiveMessage, false);
+  if (window.addEventListener) {
+      window.addEventListener("message", receiveMessage, false);
+  } else if (window.attachEvent) {
+      window.attachEvent("message", receiveMessage);
+  }
 
   $('form').on('submit',function(e){
     targetWindow.postMessage($('#tx').val(), targetOrigin);

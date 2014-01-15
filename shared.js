@@ -25,7 +25,7 @@ $(document).ready(function() {
 
   // location.origin seems to be new.
   // fallback to location.protocol + location.host
-  loc = (window.location.origin | window.location.protocol + window.location.host);
+  loc = (window.location.origin || window.location.protocol + window.location.host);
   $('h2').text('on ' + loc);
 
   function receiveMessage(event)

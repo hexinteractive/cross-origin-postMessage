@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 
-  var targetOrigin, targetWindow, tag;
+  var targetOrigin, targetWindow, tag, loc;
 
   if($('body').hasClass('pageA')) {
 
@@ -19,7 +19,10 @@ $(document).ready(function() {
 
   // :: :: shared code :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
 
-  $('h2').text('on ' + window.location.origin);
+  // location.origin seems to be new.
+  // fallback to location.protocol + location.host
+  loc = (window.location.origin | window.location.protocol + window.location.host);
+  $('h2').text('on ' + loc);
 
   function receiveMessage(event)
   {
@@ -35,7 +38,7 @@ $(document).ready(function() {
     }
   }
 
-  window.addEventListener("message", receiveMessage, false);
+  $(window).on("message", receiveMessage, false);
 
   $('form').on('submit',function(e){
     targetWindow.postMessage($('#tx').val(), targetOrigin);

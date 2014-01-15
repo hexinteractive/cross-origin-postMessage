@@ -43,9 +43,11 @@ $(document).ready(function() {
   }
 
   if (window.addEventListener) {
-      window.addEventListener("message onmessage", receiveMessage, false);
+      window.addEventListener("message", receiveMessage, false);
+      window.addEventListener("onmessage", receiveMessage, false);
   } else if (window.attachEvent) {
-      window.attachEvent("message onmessage", receiveMessage);
+      window.attachEvent("message", receiveMessage);
+      window.attachEvent("onmessage", receiveMessage);
   }
 
   $('form').on('submit',function(e){

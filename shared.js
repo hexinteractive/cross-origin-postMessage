@@ -7,14 +7,14 @@ $(document).ready(function() {
     alert('Your browser does NOT support window.postMessage. Try a different browser.');
   }
 
-  if($('body').hasClass('pageA')) {
+  if($('html').hasClass('pageA')) {
 
     targetOrigin = 'http://hexinteractive.net';
     tag = '<iframe src="' + targetOrigin + '/cross-origin-postmessage/other.html' + '"></iframe>';
     $('#iframeHolder').html(tag);
     targetWindow = $('iframe')[0].contentWindow;
 
-  } else if($('body').hasClass('pageB')) {
+  } else if($('html').hasClass('pageB')) {
 
     targetOrigin = 'http://hexinteractive.github.io';
     targetWindow = window.parent;

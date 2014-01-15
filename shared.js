@@ -43,9 +43,9 @@ $(document).ready(function() {
   }
 
   if (window.addEventListener) {
-      window.addEventListener("message", receiveMessage, false);
+      window.addEventListener("message onmessage", receiveMessage, false);
   } else if (window.attachEvent) {
-      window.attachEvent("message", receiveMessage);
+      window.attachEvent("message onmessage", receiveMessage);
   }
 
   $('form').on('submit',function(e){

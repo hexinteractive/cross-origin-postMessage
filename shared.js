@@ -3,6 +3,10 @@ $(document).ready(function() {
 
   var targetOrigin, targetWindow, tag, loc;
 
+  if(!window.postMessage) {
+    alert('Your browser does NOT support window.postMessage. Try a different browser.');
+  }
+
   if($('body').hasClass('pageA')) {
 
     targetOrigin = 'http://hexinteractive.net';
